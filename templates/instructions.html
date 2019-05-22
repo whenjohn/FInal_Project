@@ -1,0 +1,86 @@
+<head>
+  <body>
+    <form action="/instructions/{{ h2id }}" method="post">
+      <table>
+        <tr>
+          <td>
+            <a href="/">Back</a>
+          </td>
+        </tr>
+      </table>
+
+
+      <table>
+        <tr>
+          <td>
+            <h1>{{ h2title }}</h1>
+          </td>
+        </tr>
+      </table>
+
+    {% if instruction_intro %}
+    <table>
+      <tr>
+        <td>
+          {{ instruction_intro }}
+        </td>
+      </tr>
+    </table>
+    {% endif %}
+
+      <table>
+        <tr>
+          <td>
+            <textarea name="intro" rows="10" cols="30" placeholder="Write a short introduction"></textarea>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="submit" value="Add Intro"></input>
+          </td>
+        </tr>
+      </table>
+
+
+      {% if instruction_list %}
+      <table>
+        {% for key, step in instruction_list.iteritems() %}
+        <tr>
+          <td>Step: {{ key }}</td>
+        </tr>
+        <tr>
+          <td>{{ step }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+      {% endif %}
+
+
+      <table>
+            <tr>
+            <tr>
+              <td>
+                <textarea name="step" rows="10" cols="30" placeholder="Write a detail step instruction"></textarea>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input type="hidden" name="h2id" value={{ h2id }}></input>
+                <input type="submit" value="Add Step"></input>
+              </td>
+            </tr>
+          </table>
+    <form>
+<br/>
+      <table>
+        <tr>
+          <td>
+            <button type="button" onclick="location.href='/discard/{{ h2id }}';">Discard</button>
+            <button type="button" onclick="location.href='/publish/{{ h2id }}';">PUBLISH</button>
+          </td>
+        </tr>
+      </table>
+
+  </body>
+
+</head>

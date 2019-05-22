@@ -1,0 +1,67 @@
+<head>
+  <meta charset="utf-8">
+  <title>HowTo App</title>
+
+
+  <body>
+    <!-- List of Todos -->
+    <table>
+      {% if howto_list_db %}
+      <tr>
+        <td>
+          <b>Completed</b>
+        </td>
+      </tr>
+        {% for howto in howto_list_db %}
+          <tr>
+            <td><a href="/view?hid={{ howto['howto_id'] }}">{{ howto['title'] }}</a></td>
+          </tr>
+        {% endfor %}
+      {% endif %}
+    </table>
+
+    <br/>
+
+    <table>
+      {% if howto_list_cookie %}
+      <tr>
+        <td>
+          <b>Pending</b>
+        </td>
+      </tr>
+        {% for key in howto_list_cookie %}
+          <tr>
+            <td>  <a href="/instructions/{{ key }}">{{ howto_list_cookie[key]['title'] }}</a></td>
+            <td>  <a href="/instructions/{{ key }}">Edit</a></td>
+            <td>  <a href="discard/{{ key }}">Delete</a></td>
+          </tr>
+        {% endfor %}
+      {% endif %}
+    </table>
+
+<br/>
+<br/>
+
+    <table>
+      <tr>
+        <td>
+          <b>Create New HowTo</b>
+        </td>
+      </tr>
+      <form action="/instructions/None" method="post">
+        <tr>
+          <td>
+            <input type="text" name="title" placeholder="Type Title"></input>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="submit" value="Start New HowTo"></input>
+          </td>
+        </tr>
+      <form>
+    </table>
+
+    <!-- The Modal -->
+  </body>
+</head>

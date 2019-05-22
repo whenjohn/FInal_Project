@@ -1,0 +1,25 @@
+<table>
+  <tr>
+    <td>
+      <a href="/">Back</a>
+    </td>
+  </tr>
+</table>
+
+
+<table>
+  <tr>
+    <td>
+      ID:{{ hid }}
+    </td>
+  </tr>
+</table>
+
+<table>
+{% for pos in range(instructions| length) %}
+  <tr>
+    <td>Step: {{ instructions[pos][2] }}</td>
+    <td>{{ instructions[pos][3] }}</td>
+  </tr>
+{% endfor %}
+</table>
